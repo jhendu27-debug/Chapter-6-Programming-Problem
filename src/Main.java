@@ -27,6 +27,14 @@ public class Main {
 
         System.out.println("Silk crate position: " + inventory.indexOf(crate2));
 
+        System.out.println("High Risk Items:");
+
+        for (SupplyCrate crate : inventory) {
+            if (crate.isContraband || crate.baseValue > 1000) {
+                System.out.println(crate.itemName);
+            }
+        }
+
         inventory.remove(crate4);
 
         System.out.println("New inventory size: " + inventory.size());
