@@ -8,3 +8,6 @@ Using an ArrayList is different from using a regular Array because the ArrayList
 
 For the risk filter, I used a for each loop to go through every crate in the inventory. I used the OR operator because an item is high risk if it is contraband or if its value is over 1000 gold. This lets the program check both conditions with one if statement.
 
+# Phase 3
+
+I moved the inventory and most of the inventory code from Main into the TradingPost class. This made the Main class shorter and easier to understand. The TradingPost class now handles adding, removing, finding, and checking items. I think using a separate class makes the program more organized and easier to update.

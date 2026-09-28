@@ -1,42 +1,47 @@
-import java.util.ArrayList;
-
 public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<SupplyCrate> inventory = new ArrayList<>();
+        TradingPost tradingPost = new TradingPost();
 
         SupplyCrate crate1 =
-                new SupplyCrate("Iron Ore", "Northern Highlands", 500, false);
+                new SupplyCrate("Iron Ore", "Northern Highlands",
+                        500, false, false);
 
         SupplyCrate crate2 =
-                new SupplyCrate("Silk", "Eastern Isles", 1200, false);
+                new SupplyCrate("Silk", "Eastern Isles",
+                        1200, false, true);
 
         SupplyCrate crate3 =
-                new SupplyCrate("Dragon Scales", "Forbidden Mountains", 800, true);
+                new SupplyCrate("Dragon Scales", "Forbidden Mountains",
+                        800, true, false);
 
         SupplyCrate crate4 =
-                new SupplyCrate("Healing Herbs", "Western Forest", 300, false);
+                new SupplyCrate("Healing Herbs", "Western Forest",
+                        300, false, false);
 
-        inventory.add(crate1);
-        inventory.add(crate2);
-        inventory.add(crate3);
-        inventory.add(crate4);
+        tradingPost.addItem(crate1);
+        tradingPost.addItem(crate2);
+        tradingPost.addItem(crate3);
+        tradingPost.addItem(crate4);
 
-        System.out.println("Total items: " + inventory.size());
+        System.out.println("Total items: "
+                + tradingPost.getInventorySize());
 
-        System.out.println("Silk crate position: " + inventory.indexOf(crate2));
+        System.out.println("Silk crate position: "
+                + tradingPost.findItem(crate2));
 
-        System.out.println("High Risk Items:");
+        tradingPost.printHighRiskItems();
 
-        for (SupplyCrate crate : inventory) {
-            if (crate.isContraband || crate.baseValue > 1000) {
-                System.out.println(crate.itemName);
-            }
-        }
+        System.out.println("Silk approved: "
+                + tradingPost.isApproved(crate2));
 
-        inventory.remove(crate4);
+        System.out.println("Iron Ore approved: "
+                + tradingPost.isApproved(crate1));
 
-        System.out.println("New inventory size: " + inventory.size());
+        tradingPost.removeItem(crate4);
+
+        System.out.println("New inventory size: "
+                + tradingPost.getInventorySize());
     }
 }
